@@ -4,5 +4,5 @@ COPY ./dao ./
 COPY ./model ./
 COPY ./usecase ./
 COPY ./main.go ./
-ENV PORT 8080
+ENV MYSQL_USER=MYSQL_USER, MYSQL_PWD=MYSQL_PWD, MYSQL_HOST=MYSQL_HOST, MYSQL_DATABASE=MYSQL_DATABASE
 CMD ["go","run","main.go"]

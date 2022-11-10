@@ -14,6 +14,7 @@ var db *sql.DB
 
 func init() {
 	db = model.UserModel()
+	log.Println(db)
 }
 
 // ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
