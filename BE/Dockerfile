@@ -4,6 +4,4 @@ COPY ./dao ./
 COPY ./model ./
 COPY ./usecase ./
 COPY ./main.go ./
-
-
 CMD ["go","run","main.go"]
