@@ -9,7 +9,7 @@ import (
 	"syscall"
 )
 
-func UserModel(db *sql.DB) *sql.DB {
+func UserModel() *sql.DB {
 	//err := godotenv.Load("mysql.env")
 	//if err != nil {
 	//	panic("Error loading .env file")
@@ -24,7 +24,7 @@ func UserModel(db *sql.DB) *sql.DB {
 	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
-	_db, err := sql.Open("mysql", connStr)
+	db, err := sql.Open("mysql", connStr)
 
 	// ①-2
 	//_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@(localhost:3306)/%s", mysqlUser, mysqlUserPwd, mysqlDatabase))
@@ -32,10 +32,10 @@ func UserModel(db *sql.DB) *sql.DB {
 		log.Fatalf("fail: sql.Open, %v\n", err)
 	}
 	// ①-3
-	if err := _db.Ping(); err != nil {
-		log.Fatalf("fail: _db.Ping, %v\n", err)
-	}
-	db = _db
+	//if err := _db.Ping(); err != nil {
+	//	log.Fatalf("fail: _db.Ping, %v\n", err)
+	//}
+	//db = _db
 	return db
 }
 

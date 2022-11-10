@@ -13,7 +13,7 @@ import (
 var db *sql.DB
 
 func init() {
-	db = model.UserModel(db)
+	db = model.UserModel()
 }
 
 // ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
