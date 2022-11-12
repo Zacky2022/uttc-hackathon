@@ -32,16 +32,16 @@ import (
 //}
 
 func UserModel() *sql.DB {
-	//mysqlUser := os.Getenv("MYSQL_USER")
-	//mysqlPwd := os.Getenv("MYSQL_PWD")
-	//mysqlHost := os.Getenv("MYSQL_HOST")
-	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
-	//
-	mysqlUser := "uttc"
-	mysqlPwd := "HarutoMiya3/22"
-	mysqlHost := "unix(/cloudsql/term2-haruto-miyazaki:us-central1:uttc)"
-	//mysqlHost := "34.71.244.44"
-	mysqlDatabase := "hackathon"
+	mysqlUser := os.Getenv("MYSQL_USER")
+	mysqlPwd := os.Getenv("MYSQL_PWD")
+	mysqlHost := os.Getenv("MYSQL_HOST")
+	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+
+	//mysqlUser := "uttc"
+	//mysqlPwd := "HarutoMiya3/22"
+	//mysqlHost := "unix(/cloudsql/term2-haruto-miyazaki:us-central1:uttc)"
+	////mysqlHost := "34.71.244.44"
+	//mysqlDatabase := "hackathon"
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
 	db, err := sql.Open("mysql", connStr)
 	if err != nil {
