@@ -3,6 +3,7 @@ package model
 import (
 	"database/sql"
 	"fmt"
+	"github.com/joho/godotenv"
 	"log"
 	"os"
 	"os/signal"
@@ -10,10 +11,10 @@ import (
 )
 
 func UserModel() *sql.DB {
-	//err := godotenv.Load("mysql.env")
-	//if err != nil {
-	//	panic("Error loading .env file")
-	//}
+	err := godotenv.Load("mysql.env")
+	if err != nil {
+		panic("Error loading .env file")
+	}
 	//mysqlUser := os.Getenv("MYSQL_USER")
 	//mysqlUserPwd := os.Getenv("MYSQL_PASSWORD")
 	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
@@ -23,19 +24,19 @@ func UserModel() *sql.DB {
 	//mysqlHost := os.Getenv("MYSQL_HOST")
 	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlPwd := os.Getenv("MYSQL_PWD")
-	mysqlHost := os.Getenv("MYSQL_HOST")
-	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
+	mysqlUser := "zacky"
+	mysqlPwd := "HarutoMiya3/22"
+	mysqlHost := "unix(/cloudsql/term2-haruto-miyazaki:us-central1:uttc)"
+	mysqlDatabase := "hackathon"
 
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
 	db, err := sql.Open("mysql", connStr)
 
 	// ①-2
 	//_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@(localhost:3306)/%s", mysqlUser, mysqlUserPwd, mysqlDatabase))
-	if err != nil {
-		log.Fatalf("fail: sql.Open, %v\n", err)
-	}
+	//if err != nil {
+	//	log.Fatalf("fail: sql.Open, %v\n", err)
+	//}
 	// ①-3
 	//if err := _db.Ping(); err != nil {
 	//	log.Fatalf("fail: _db.Ping, %v\n", err)

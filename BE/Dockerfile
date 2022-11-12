@@ -4,5 +4,5 @@ COPY ./dao ./
 COPY ./model ./
 COPY ./usecase ./
 COPY ./main.go ./
-ENV SSLCA = /
+COPY ./go.mod ./
 CMD ["go","run","main.go"]
