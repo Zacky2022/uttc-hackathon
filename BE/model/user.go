@@ -23,10 +23,10 @@ func UserModel() *sql.DB {
 	//mysqlHost := os.Getenv("MYSQL_HOST")
 	//mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	mysqlUser := "zacky"
-	mysqlPwd := "HarutoMiya3/22"
-	mysqlHost := "unix(/cloudsql/term2-haruto-miyazaki:us-central1:uttc)"
-	mysqlDatabase := "hackathon"
+	mysqlUser := os.Getenv("MYSQL_USER")
+	mysqlPwd := os.Getenv("MYSQL_PWD")
+	mysqlHost := os.Getenv("MYSQL_HOST")
+	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
 	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
 	db, err := sql.Open("mysql", connStr)
