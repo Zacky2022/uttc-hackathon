@@ -13,14 +13,19 @@ import (
 var db *sql.DB
 
 func init() {
-	db = model.UserModel()
+	db = model.UserModel() //&{0 0x1400012c020 0 {0 0} [] map[] 0 0 0x140001100c0 false map[] map[] 0 0 0 0 <nil> 0 0 0 0 0x1048689a0}
+	//db = model.UserModel(db) //&{0 0x1400012c058 0 {0 0} [0x14000228000] map[] 0 1 0x14000110240 false map[0x14000228000:map[0x14000228000:true]] map[] 0 0 0 0 <nil> 0 0 0 0 0x1041011a0}
+
 	log.Println(db)
 }
 
 // ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
 func handler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Headers", "*")
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	w.Header().Set("Content-Type", "application/json")
 	dao.DaoClass(w, r, db)
-
 }
 
 func main() {

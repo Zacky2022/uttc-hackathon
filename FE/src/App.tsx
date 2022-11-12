@@ -13,7 +13,7 @@ function App() {
   const [users, setUsers] = useState<typePOST[]>([])
 
   useEffect(() => {
-      fetch('http://localhost:8000/user', {method: 'GET'})
+      fetch('http://localhost:8080/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
@@ -37,7 +37,7 @@ function App() {
     }
 
     try {
-      const result = await fetch("http://localhost:8000/user", {
+      const result = await fetch("http://localhost:8080/user", {
         method: "POST",
         body: JSON.stringify({
           name: name,
@@ -49,7 +49,7 @@ function App() {
       }
       setName("");
       setAge(0);
-      fetch('http://localhost:8000/user', {method: 'GET'})
+      fetch('http://localhost:8080/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
