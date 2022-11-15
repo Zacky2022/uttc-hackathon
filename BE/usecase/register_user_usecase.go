@@ -9,12 +9,11 @@ import (
 )
 
 type UserResForHTTPPost struct {
-	Id   ulid.ULID `json:"id"`
+	Id ulid.ULID `json:"id"`
 }
 
 type StcDataType struct {
 	Name string
-	Age  int
 }
 
 func PostCase(Id ulid.ULID, db *sql.DB, stcData StcDataType, w http.ResponseWriter) {
@@ -22,7 +21,7 @@ func PostCase(Id ulid.ULID, db *sql.DB, stcData StcDataType, w http.ResponseWrit
 	if e != nil {
 		log.Printf("failed to begin")
 	}
-	_, Error := tx.Exec("INSERT INTO user (id, name, age) VALUES (?,?,?)", Id.String(), stcData.Name, stcData.Age)
+	_, Error := tx.Exec("INSERT INTO user (id, name) VALUES (?,?,?)", Id.String(), stcData.Name)
 	if Error != nil {
 		log.Printf("fail: could not execute, %v\n", Error)
 		w.WriteHeader(http.StatusInternalServerError)

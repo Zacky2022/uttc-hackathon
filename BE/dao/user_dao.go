@@ -10,7 +10,7 @@ import (
 func DaoClass(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 	switch r.Method {
 	case http.MethodGet:
-		controller.GetController(w, r, db)
+		controller.GetController(w, db)
 
 	case http.MethodPost:
 		controller.PostController(w, r, db)

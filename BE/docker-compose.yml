@@ -1,0 +1,21 @@
+version: '3.9'
+services:
+  web:
+    container_name: web
+    build:
+      dockerfile: ./Dockerfile
+      context: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db # ここで指定したServiceは、`docker-compose run`した際に、指定元のServiceが実行されるよりも前に呼び出されるようになる。つまり、webというServiceよりも前に、dbというサービスが実行される。
+  frontend:
+    depends_on:
+      - db
+    ports:
+      - "8200:8200"
+    entrypoint: "/bin/sh -c 'npm install && npm run start'" # この記述によって、フロントエンドのフレームワーク最大の恩恵であるlive loadがdockerでも使える。ただし、このComposeFileでentrypointを指定すると、Dockerfile内のCMDやENTRYPOINTは無視されるので注意。
+volumes: # このようにトップレベルでvolumesを指定すると、名前付きボリュームになる。
+  bundle:
+    driver: local # bundleを使う際のdriverとしてlocalを指定
+  mysql-datavolume:

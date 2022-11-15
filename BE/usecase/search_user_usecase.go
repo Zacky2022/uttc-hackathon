@@ -10,11 +10,10 @@ import (
 type UserResForHTTPGet struct {
 	Id   string `json:"id"`
 	Name string `json:"name"`
-	Age  int    `json:"age"`
 }
 
 func GetCase(db *sql.DB, w http.ResponseWriter) []byte {
-	rows, err := db.Query("SELECT name, age FROM user")
+	rows, err := db.Query("SELECT id,name FROM user")
 	if err != nil {
 		log.Printf("fail: db.Query, %v\n", err)
 		w.WriteHeader(http.StatusInternalServerError)
@@ -25,7 +24,7 @@ func GetCase(db *sql.DB, w http.ResponseWriter) []byte {
 	users := make([]UserResForHTTPGet, 0)
 	for rows.Next() {
 		var u UserResForHTTPGet
-		if err := rows.Scan(&u.Name, &u.Age); err != nil {
+		if err := rows.Scan(&u.Id, &u.Name); err != nil {
 			log.Printf("fail: rows.Scan, %v\n", err)
 
 			if err := rows.Close(); err != nil { // 500を返して終了するが、その前にrowsのClose処理が必要

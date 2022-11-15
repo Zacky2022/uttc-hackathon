@@ -5,4 +5,5 @@ COPY ./model ./
 COPY ./usecase ./
 COPY ./main.go ./
 COPY ./go.mod ./
+COPY ./go.sum ./
 CMD ["go","run","main.go"]

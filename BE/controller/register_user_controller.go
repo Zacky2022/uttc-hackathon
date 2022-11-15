@@ -34,10 +34,6 @@ func PostController(w http.ResponseWriter, r *http.Request, db *sql.DB) {
 		log.Println("fail: name is empty")
 		w.WriteHeader(http.StatusBadRequest)
 		return
-	} else if stcData.Age < 20 || stcData.Age > 80 {
-		log.Println("fail: age is invalid")
-		w.WriteHeader(http.StatusBadRequest)
-		return
 	}
 
 	t := time.Now()
