@@ -19,7 +19,7 @@ const Login = (props:Props) => {
   const [name, setName] = useState("");
   const [users, setUsers] = useState<typeUsers[]>([])
   useEffect(() => {
-      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/user', {method: 'GET'})
+      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.apps/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)

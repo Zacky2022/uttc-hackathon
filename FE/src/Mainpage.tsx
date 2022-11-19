@@ -31,14 +31,14 @@ const Mainpage = (props:Props) => {
 
   const Getfunction = () => {
     useEffect(() => {
-      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setConsf(data)
       })
     },[])
     useEffect(() => {
-      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setConsto(data)
@@ -61,7 +61,7 @@ const Mainpage = (props:Props) => {
           return;
         }
         try {
-          const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}`, {
+          const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}`, {
             method: "POST",
             body: JSON.stringify({
               from:Id,
@@ -75,12 +75,12 @@ const Mainpage = (props:Props) => {
           }
           setPoint(0);
           setMessage("");
-            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
             .then((res) => res.json())
             .then((data) => {
               setConsf(data)
             })
-            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
             .then((res) => res.json())
             .then((data) => {
               setConsto(data)
@@ -104,7 +104,7 @@ const Mainpage = (props:Props) => {
       return;
     }
     try {
-      const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/update`, {
+      const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/update`, {
         method: "POST",
           body: JSON.stringify({
           targ:targ,
@@ -117,12 +117,12 @@ const Mainpage = (props:Props) => {
       }
       setPoint(0);
       setMessage("");
-        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
         .then((res) => res.json())
         .then((data) => {
           setConsf(data)
         })
-        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
         .then((res) => res.json())
         .then((data) => {
           setConsto(data)

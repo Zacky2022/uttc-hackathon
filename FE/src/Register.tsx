@@ -14,7 +14,7 @@ function Register() {
       return;
     }
     try {
-      const result = await fetch("https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/user", {
+      const result = await fetch("https://hackathon-2-sk7fvtjuea-uc.a.run.app/user", {
         method: "POST",
         body: JSON.stringify({
           name: name,

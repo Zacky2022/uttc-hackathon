@@ -1,5 +1,4 @@
 import  { useState,useEffect } from "react";
-import { stringify } from "querystring";
 import Select from "react-select";
 
 type Props = {
@@ -22,7 +21,7 @@ const Messageform = (props: Props) => {
 
   const [users, setUsers] = useState<typeUsers[]>([])
   useEffect(() => {
-      fetch('http://localhost:8080/user', {method: 'GET'})
+      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
