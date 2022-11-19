@@ -1,6 +1,8 @@
 import { Link, useNavigate } from "react-router-dom";
 import Registerbox from "./Registerform";
 
+const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+
 function Register() {
   const navigate = useNavigate();
   const onSubmit = async (name: string, setName:React.Dispatch<React.SetStateAction<string>>) => {
@@ -14,7 +16,7 @@ function Register() {
       return;
     }
     try {
-      const result = await fetch("https://hackathon-2-sk7fvtjuea-uc.a.run.app/user", {
+      const result = await fetch(`${BELink}/user`, {
         method: "POST",
         body: JSON.stringify({
           name: name,

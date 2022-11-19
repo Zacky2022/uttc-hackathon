@@ -31,14 +31,14 @@ const Mainpage = (props:Props) => {
 
   const Getfunction = () => {
     useEffect(() => {
-      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+      fetch(`${BELink}/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setConsf(data)
       })
     },[])
     useEffect(() => {
-      fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+      fetch(`${BELink}/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setConsto(data)
@@ -61,7 +61,7 @@ const Mainpage = (props:Props) => {
           return;
         }
         try {
-          const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}`, {
+          const result = await fetch(`${BELink}/con-list?user_id=${Id}`, {
             method: "POST",
             body: JSON.stringify({
               from:Id,
@@ -75,12 +75,12 @@ const Mainpage = (props:Props) => {
           }
           setPoint(0);
           setMessage("");
-            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+            fetch(`${BELink}/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
             .then((res) => res.json())
             .then((data) => {
               setConsf(data)
             })
-            fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+            fetch(`${BELink}/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
             .then((res) => res.json())
             .then((data) => {
               setConsto(data)
@@ -92,19 +92,11 @@ const Mainpage = (props:Props) => {
 
   const onSubmit2 = async (targ:string, point:number, message:string, setPoint:React.Dispatch<React.SetStateAction<number>>,setMessage:React.Dispatch<React.SetStateAction<string>>) => {
     if (!targ) {
-      alert("Please enter name");
-      return;
-    }
-    if (targ.length > 50) {
-      alert("Please enter a name shorter than 50 characters");
-      return;
-    }
-    if (point<=0) {
-      alert("You cannot send point less than 1");
+      alert("Please choose one message to update");
       return;
     }
     try {
-      const result = await fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/update`, {
+      const result = await fetch(`${BELink}/update`, {
         method: "POST",
           body: JSON.stringify({
           targ:targ,
@@ -117,12 +109,12 @@ const Mainpage = (props:Props) => {
       }
       setPoint(0);
       setMessage("");
-        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+        fetch(`${BELink}/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
         .then((res) => res.json())
         .then((data) => {
           setConsf(data)
         })
-        fetch(`https://hackathon-2-sk7fvtjuea-uc.a.run.app/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+        fetch(`${BELink}/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
         .then((res) => res.json())
         .then((data) => {
           setConsto(data)

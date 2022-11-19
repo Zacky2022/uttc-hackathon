@@ -1,6 +1,8 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
+const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+
 type typeUser = {
   id: string
   name: string
@@ -10,7 +12,7 @@ type typeUser = {
 function List() {
   const [users, setUsers] = useState<typeUser[]>([])
   useEffect(() => {
-      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app/user', {method: 'GET'})
+      fetch(`${BELink}/user`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
@@ -39,14 +41,5 @@ function List() {
     </div>
   );
 }
-//   return (
-//     <>
-//       <h1>ポイント一覧</h1>
-//       <div>
-//         <Link to={`/`}>Login画面に戻る</Link>
-//       </div>
-//     </>
-//   );
-// };
 
 export default List;

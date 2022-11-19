@@ -1,5 +1,4 @@
 import  {useState} from "react";
-import { stringify } from "querystring";
 
 type Props = {
   onSubmit: (name:string, setName:React.Dispatch<React.SetStateAction<string>>) => void;

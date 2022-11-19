@@ -3,6 +3,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Select from "react-select"
 
+const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+
 type typeUsers = {
   id: string
   name: string
@@ -19,7 +21,7 @@ const Login = (props:Props) => {
   const [name, setName] = useState("");
   const [users, setUsers] = useState<typeUsers[]>([])
   useEffect(() => {
-      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app/user', {method: 'GET'})
+      fetch(`${BELink}/user`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)

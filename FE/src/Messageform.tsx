@@ -1,6 +1,8 @@
 import  { useState,useEffect } from "react";
 import Select from "react-select";
 
+const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+
 type Props = {
   onSubmit: (to:string, point:number, message:string, setPoint:React.Dispatch<React.SetStateAction<number>>,setMessage:React.Dispatch<React.SetStateAction<string>>) => void;
 };
@@ -21,7 +23,7 @@ const Messageform = (props: Props) => {
 
   const [users, setUsers] = useState<typeUsers[]>([])
   useEffect(() => {
-      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app/user', {method: 'GET'})
+      fetch(`${BELink}/user`, {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)
