@@ -10,7 +10,7 @@ type typeUser = {
 function List() {
   const [users, setUsers] = useState<typeUser[]>([])
   useEffect(() => {
-      fetch('http://localhost:8080/user', {method: 'GET'})
+      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)

@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 const NotFound = () => {
   return (
     <>
-      <h1>お探しのページは見つかりませんでした。</h1>
+      <h1>Page Not Found</h1>
       <div>
-        <Link to={`/`}>ホームに戻る</Link>
+        <Link to={`/`}>Go back to Lorgin Form</Link>
       </div>
     </>
   );

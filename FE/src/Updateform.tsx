@@ -1,5 +1,4 @@
-import  { useState,useEffect } from "react";
-import { stringify } from "querystring";
+import  { useState } from "react";
 import Select from "react-select";
 
 type Consftype = {

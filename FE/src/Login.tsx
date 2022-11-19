@@ -1,10 +1,7 @@
 import "./App.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import Form from "./Registerform";
 import Select from "react-select"
-import { convertTypeAcquisitionFromJson, idText } from "typescript";
-import { stringify } from "querystring";
 
 type typeUsers = {
   id: string
@@ -22,7 +19,7 @@ const Login = (props:Props) => {
   const [name, setName] = useState("");
   const [users, setUsers] = useState<typeUsers[]>([])
   useEffect(() => {
-      fetch('http://localhost:8080/user', {method: 'GET'})
+      fetch('https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/user', {method: 'GET'})
       .then((res) => res.json())
       .then((data) => {
         setUsers(data)

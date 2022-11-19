@@ -1,6 +1,5 @@
 import { Link, useNavigate } from "react-router-dom";
 import Registerbox from "./Registerform";
-import { useEffect, useState } from "react";
 
 function Register() {
   const navigate = useNavigate();
@@ -15,7 +14,7 @@ function Register() {
       return;
     }
     try {
-      const result = await fetch("http://localhost:8080/user", {
+      const result = await fetch("https://hackathon-2-sk7fvtjuea-uc.a.run.app:8080/user", {
         method: "POST",
         body: JSON.stringify({
           name: name,
