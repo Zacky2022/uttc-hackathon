@@ -17,8 +17,8 @@ type StcDataType struct {
 }
 
 func PostCase(Id ulid.ULID, db *sql.DB, stcData StcDataType, w http.ResponseWriter) {
-	tx, e := db.Begin()
-	if e != nil {
+	tx, err := db.Begin()
+	if err != nil {
 		log.Printf("failed to begin")
 	}
 	_, Error := tx.Exec("INSERT INTO user (id, name) VALUES (?,?,?)", Id.String(), stcData.Name)

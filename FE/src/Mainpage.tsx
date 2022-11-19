@@ -1,25 +1,168 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { getAllByPlaceholderText } from "@testing-library/react";
+import Messageform from "./Messageform";
+import Updateform from "./Updateform"
 
 type Props = {
-  id:string|undefined
+  id:string
+  name: string
+}
+
+type Consftype = {
+  msid: string
+  sentpoint:number
+  message:string
+  name:string
+}
+
+type Constotype = {
+  sentpoint:number
+  message:string
+  name:string
+}
+
+type typePOST = {
+  to : string
+  point: number
+  message: string
 }
 
 const Mainpage = (props:Props) => {
-  const [users, setUsers] = useState("");
+  const [consf, setConsf] = useState<Consftype[]>([]);
+  const [consto, setConsto] = useState<Constotype[]>([]);
+  const Id = props.id
+  const Name = props.name
 
-  useEffect(() => {
-    fetch('http://localhost:8080/user', {method: 'GET'})
-    .then((res) => res.json())
-    .then((data) => {
-      setUsers(data)
-    })
-},[])
+  const Getfunction = () => {
+    useEffect(() => {
+      fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+      .then((res) => res.json())
+      .then((data) => {
+        setConsf(data)
+      })
+    },[])
+    useEffect(() => {
+      fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+      .then((res) => res.json())
+      .then((data) => {
+        setConsto(data)
+      })
+    },[])
+  };
+  Getfunction();
+  
+  const onSubmit = async (to:string|undefined, point:number, message:string, setPoint:React.Dispatch<React.SetStateAction<number>>,setMessage:React.Dispatch<React.SetStateAction<string>>) => {
+        if (!to) {
+          alert("Please enter name");
+          return;
+        }
+        if (to.length > 50) {
+          alert("Please enter a name shorter than 50 characters");
+          return;
+        }
+        if (point<=0) {
+          alert("You cannot send point less than 1");
+          return;
+        }
+        try {
+          const result = await fetch(`http://localhost:8080/con-list?user_id=${Id}`, {
+            method: "POST",
+            body: JSON.stringify({
+              from:Id,
+              to: to,
+              point: point,
+              message: message,
+            }),
+          });
+          if (!result.ok) {
+            throw Error(`Failed to create user: ${result.status}`);
+          }
+          setPoint(0);
+          setMessage("");
+            fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+            .then((res) => res.json())
+            .then((data) => {
+              setConsf(data)
+            })
+            fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+            .then((res) => res.json())
+            .then((data) => {
+              setConsto(data)
+            })
+          } catch (err) {
+          console.error(err);
+        }
+      };
+
+  const onSubmit2 = async (targ:string, point:number, message:string, setPoint:React.Dispatch<React.SetStateAction<number>>,setMessage:React.Dispatch<React.SetStateAction<string>>) => {
+    if (!targ) {
+      alert("Please enter name");
+      return;
+    }
+    if (targ.length > 50) {
+      alert("Please enter a name shorter than 50 characters");
+      return;
+    }
+    if (point<=0) {
+      alert("You cannot send point less than 1");
+      return;
+    }
+    try {
+      const result = await fetch(`http://localhost:8080/update`, {
+        method: "POST",
+          body: JSON.stringify({
+          targ:targ,
+          point: point,
+          message: message,
+        }),
+      });
+      if (!result.ok) {
+        throw Error(`Failed to create user: ${result.status}`);
+      }
+      setPoint(0);
+      setMessage("");
+        fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=from`, {method: 'GET'})
+        .then((res) => res.json())
+        .then((data) => {
+          setConsf(data)
+        })
+        fetch(`http://localhost:8080/con-list?user_id=${Id}&ft=to`, {method: 'GET'})
+        .then((res) => res.json())
+        .then((data) => {
+          setConsto(data)
+        })
+      } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <>
-      <h1>{props.id}</h1>
+      <h1>Hello, {Name} san !</h1>
+      <h2>contributions you sent</h2>
+      <ul>
+                {
+                    consf.map((post) => 
+                    <p className="DBdata" key={post.message}>You sent {post.sentpoint} points to {post.name}. Message:{post.message} </p>
+                    )
+                }
+      </ul>
+      <h2>contributions you got</h2>
+      <ul>
+                {
+                    consto.map((post) => 
+                    <p className="DBdata" key={post.message}>You got {post.sentpoint} points from {post.name}. Message:{post.message} </p>
+                    )
+                }
+      </ul>
+      <Messageform onSubmit={onSubmit}/>
+      <Updateform onSubmit={onSubmit2} consf={consf}/>
       <div>
-        <Link to={`/`}>ホームに戻る</Link>
+        <Link to={`/`}>Go back to Lorgin Form</Link>
+      </div>
+      <div>
+        <Link to={`/pointlist/`}>Show Point List</Link>
       </div>
     </>
   );
