@@ -69,8 +69,8 @@ func init() {
 
 // ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
 func userhandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app/")
-	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app/")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 
@@ -172,8 +172,8 @@ func userhandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func listhandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app/")
-	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app/")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 	userId := r.URL.Query().Get("user_id")
@@ -320,8 +320,8 @@ func listhandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func updatehandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app/")
-	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app/")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 	switch r.Method {
