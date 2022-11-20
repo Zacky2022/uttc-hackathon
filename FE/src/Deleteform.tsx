@@ -20,7 +20,7 @@ type typeCons = {
   name: string
 }
 
-const Updateform = (props: Props) => {
+const Deleteform = (props: Props) => {
   const [targ,setTarg] = useState("");
   const [point, setPoint] = useState<number>(0);
   const [message, setMessage] = useState("");
@@ -37,37 +37,17 @@ const Updateform = (props: Props) => {
   
   return (
     <form  onSubmit={submit}>
-      <h2>Updating contribution</h2>
+      <h2>Deleting contribution</h2>
       <Select 
           options={options}
-          defaultValue={{label:'Contribution to modify', value:'default'}}
+          defaultValue={{label:'Contribution to delete', value:'default'}}
           onChange={(value)=>{
             setTarg(String(value?.value));
           }}
           />
-      <div style={{display: "flex", justifyContent: "center"}} >
-        <label>Point: </label>
-        <input
-          type={"number"}
-          style = {{ marginBottom: 15 }}
-          value={point}
-          onChange={(e) => {
-            setPoint(Number(e.target.value))
-          }}
-        ></input>
-        <label>Message: </label>
-        <input
-          type={"string"}
-          style = {{ marginBottom: 15 }}
-          value={message}
-          onChange={(e) => {
-            setMessage(String(e.target.value))
-          }}
-        ></input>
-      </div>
-      <button type={"submit"}>UPDATE</button>
+      <button type={"submit"}>DELETE</button>
     </form>
   );
 };
 
-export default Updateform;
+export default Deleteform;

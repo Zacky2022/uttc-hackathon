@@ -419,11 +419,38 @@ func updatehandler(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+func deletehandler(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+	w.Header().Set("Content-Type", "application/json")
+	switch r.Method {
+	case http.MethodGet:
+		targId := r.URL.Query().Get("targ_id")
+		if targId == "" {
+			log.Println("fail: target is not defined")
+			w.WriteHeader(http.StatusBadRequest)
+			return
+		}
+		_, err := db.Query("DELETE FROM contribution WHERE id=?", targId)
+		if err != nil {
+			log.Printf("fail: db.Query, %v\n", err)
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+	default:
+		log.Printf("fail: HTTP Method is %s\n", r.Method)
+		w.WriteHeader(http.StatusBadRequest)
+		return
+	}
+}
+
 func main() {
 	// ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
 	http.HandleFunc("/user", userhandler)
 	http.HandleFunc("/con-list", listhandler)
 	http.HandleFunc("/update", updatehandler)
+	http.HandleFunc("/delete", deletehandler)
 
 	// ③ Ctrl+CでHTTPサーバー停止時にDBをクローズする
 	closeDBWithSysCall()
