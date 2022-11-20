@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import Messageform from "./Messageform";
 import Updateform from "./Updateform";
 import Deleteform from "./Deleteform";
-import Sidebar from "./components/Sidebar";
 
 const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
 
@@ -156,9 +155,6 @@ const Mainpage = (props:Props) => {
   return (
     <>
       <h1>Hello, {Name} san !</h1>
-      <div className="Sidebar">
-        <Sidebar/>
-      </div>
       <h2>contributions you sent</h2>
       <ul>
                 {
