@@ -432,6 +432,24 @@ func deletehandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
+		tx, error := db.Begin()
+		if error != nil {
+			log.Printf("failed to begin")
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		_, Err := tx.Exec("UPDATE user SET point=(SELECT SUM(CASE WHEN msid!=? THEN sentpoint ELSE 0 END) FROM contribution WHERE idto=(SELECT idto FROM contribution WHERE msid=?)) WHERE id=(SELECT idto FROM contribution WHERE msid=?)", targId, targId, targId)
+		if Err != nil {
+			log.Println("failed to update point")
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		if Err := tx.Commit(); Err != nil {
+			log.Println("failed to commit")
+			w.WriteHeader(http.StatusInternalServerError)
+			return
+		}
+		tx.Commit()
 		_, err := db.Query("DELETE FROM contribution WHERE msid=?", targId)
 		if err != nil {
 			log.Printf("fail: db.Query, %v\n", err)
