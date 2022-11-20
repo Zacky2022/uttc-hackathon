@@ -11,36 +11,36 @@ export const SidebarData = [
   {
     title: "ホーム",
     icon: <HomeIcon />,
-    link: "/home",
+    link: "/pointlist/",
   },
   {
     title: "メール",
     icon: <AttachEmailIcon />,
-    link: "/mail",
+    link: "/pointlist/",
   },
   {
     title: "アナリティクス",
     icon: <AssessmentIcon />,
-    link: "/analitics",
+    link: "/pointlist/",
   },
   {
     title: "友達追加",
     icon: <PersonAddIcon />,
-    link: "/friends",
+    link: "/pointlist/",
   },
   {
     title: "お支払い設定",
     icon: <AddCardIcon />,
-    link: "/payment",
+    link: "/pointlist/",
   },
   {
     title: "アップロード",
     icon: <BackupIcon />,
-    link: "/upload",
+    link: "/pointlist/",
   },
   {
     title: "詳細設定",
     icon: <SettingsIcon />,
-    link: "/rocket",
+    link: "/pointlist/",
   },
 ];
