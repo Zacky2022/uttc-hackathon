@@ -432,7 +432,7 @@ func deletehandler(w http.ResponseWriter, r *http.Request) {
 			w.WriteHeader(http.StatusBadRequest)
 			return
 		}
-		_, err := db.Query("DELETE FROM contribution WHERE id=?", targId)
+		_, err := db.Query("DELETE FROM contribution WHERE msid=?", targId)
 		if err != nil {
 			log.Printf("fail: db.Query, %v\n", err)
 			w.WriteHeader(http.StatusInternalServerError)
