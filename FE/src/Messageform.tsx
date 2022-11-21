@@ -35,7 +35,7 @@ const Messageform = (props: Props) => {
   }
   
   return (
-    <form  onSubmit={submit}>
+    <form  onSubmit={submit} className="SendForm">
       <h2>Sending contribution</h2>
       <Select 
           options={options}
@@ -44,7 +44,7 @@ const Messageform = (props: Props) => {
             setTo(String(value?.value));
           }}
           />
-      <div style={{display: "flex", justifyContent: "center"}} >
+      <div style={{display: "flex", justifyContent: "center", flexDirection:"column"}} >
         <label>Point: </label>
         <input
           type={"number"}

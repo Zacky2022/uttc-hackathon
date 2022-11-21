@@ -45,7 +45,7 @@ const Updateform = (props: Props) => {
             setTarg(String(value?.value));
           }}
           />
-      <div style={{display: "flex", justifyContent: "center"}} >
+      <div style={{display: "flex", justifyContent: "center", flexDirection:"column"}} >
         <label>Point: </label>
         <input
           type={"number"}

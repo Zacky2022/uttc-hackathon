@@ -36,7 +36,7 @@ const Deleteform = (props: Props) => {
   }
   
   return (
-    <form  onSubmit={submit}>
+    <form  onSubmit={submit} className="DeleteForm">
       <h2>Deleting contribution</h2>
       <Select 
           options={options}

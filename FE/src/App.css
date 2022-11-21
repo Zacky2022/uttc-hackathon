@@ -16,23 +16,50 @@
 .App-header {
   background-color: #282c34;
   min-height:100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
   color: white;
 }
 .DBdata {
   background-color: aliceblue;
   min-height: 50px;
+  padding:10px;
+  background-color: rgb(202, 228, 252);
 }
 
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
-  }
-  to {
     transform: rotate(360deg);
   }
+}
+.mainbody {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.Conbox {
+  padding:10px;
+  background-color:beige;
+}
+.HelloName {
+  padding: 20px;
+  background-color:rgb(220, 236, 245);
+}
+.SendForm {
+  background-color:rgb(162, 184, 227);
+  margin-bottom: 20px;
+  padding: 20px;
+}
+.UpdateForm {
+  padding: 15px;
+  background-color:rgb(162, 184, 227);
+  margin-bottom: 20px;
+}
+.DeleteForm {
+  padding: 20px;
+  background-color:rgb(162, 184, 227);
+  margin-bottom: 20px;
+}
+body {
+  display: flex;
 }

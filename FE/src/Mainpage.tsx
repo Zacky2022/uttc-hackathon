@@ -153,9 +153,13 @@ const Mainpage = (props:Props) => {
   };
 
   return (
-    <>
-      <h1>Hello, {Name} san !</h1>
-      <h2>contributions you sent</h2>
+    <body>
+      <div className="sidebody">
+        <p>サイドバー</p>
+      </div>
+      <div className="mainbody">
+      <h1 className="HelloName">Hello, {Name} san !</h1>
+      <h2 className="Conbox">contributions you sent</h2>
       <ul>
                 {
                     consf.map((post) => 
@@ -163,7 +167,7 @@ const Mainpage = (props:Props) => {
                     )
                 }
       </ul>
-      <h2>contributions you got</h2>
+      <h2 className="Conbox">contributions you got</h2>
       <ul>
                 {
                     consto.map((post) => 
@@ -180,7 +184,8 @@ const Mainpage = (props:Props) => {
       <div>
         <Link to={`/pointlist/`}>Show Point List</Link>
       </div>
-    </>
+      </div>
+    </body>
   );
 };
 
