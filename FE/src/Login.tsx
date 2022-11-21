@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import Select from "react-select"
 
-const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+const BELink = "http://localhost:8080";
 
 
 

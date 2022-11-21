@@ -36,7 +36,7 @@ const Updateform = (props: Props) => {
   }
   
   return (
-    <form  onSubmit={submit}>
+    <form  onSubmit={submit} className="UpdateForm">
       <h2>Updating contribution</h2>
       <Select 
           options={options}
@@ -45,7 +45,7 @@ const Updateform = (props: Props) => {
             setTarg(String(value?.value));
           }}
           />
-      <div style={{display: "flex", justifyContent: "center"}} >
+      <div style={{display: "flex", justifyContent: "center", flexDirection:"column"}} >
         <label>Point: </label>
         <input
           type={"number"}

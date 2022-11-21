@@ -1,7 +1,7 @@
 import  { useState,useEffect } from "react";
 import Select from "react-select";
 
-const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+const BELink = "http://localhost:8080";
 
 type Props = {
   onSubmit: (to:string, point:number, message:string, setPoint:React.Dispatch<React.SetStateAction<number>>,setMessage:React.Dispatch<React.SetStateAction<string>>) => void;
@@ -35,7 +35,7 @@ const Messageform = (props: Props) => {
   }
   
   return (
-    <form  onSubmit={submit}>
+    <form  onSubmit={submit} className="SendForm">
       <h2>Sending contribution</h2>
       <Select 
           options={options}
@@ -44,7 +44,7 @@ const Messageform = (props: Props) => {
             setTo(String(value?.value));
           }}
           />
-      <div style={{display: "flex", justifyContent: "center"}} >
+      <div style={{display: "flex", justifyContent: "center", flexDirection:"column"}} >
         <label>Point: </label>
         <input
           type={"number"}

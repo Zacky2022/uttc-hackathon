@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 
-const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+const BELink = "http://localhost:8080";
 
 type typeUser = {
   id: string

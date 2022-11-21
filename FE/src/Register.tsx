@@ -1,7 +1,7 @@
 import { Link, useNavigate } from "react-router-dom";
 import Registerbox from "./Registerform";
 
-const BELink = "https://hackathon-2-sk7fvtjuea-uc.a.run.app";
+const BELink = "http://localhost:8080";
 
 function Register() {
   const navigate = useNavigate();
