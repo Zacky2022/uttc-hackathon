@@ -34,9 +34,7 @@ function Register() {
      
     return (
       <div className="App">
-        <header className="App-header">
-          Create New Account
-        </header>
+        <header className="App-header">Create New Account</header>
         <main className="App-body">
           <Registerbox onSubmit={onSubmit} />
           <div className="datacontainer">

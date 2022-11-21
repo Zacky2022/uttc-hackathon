@@ -21,9 +21,7 @@ function List() {
      
   return (
     <div className="App">
-      <header className="App-header">
-        Point List
-      </header>
+      <header className="App-header">Point List</header>
       <main className="App-body">
         <div className="datacontainer">
             <ul>

@@ -37,9 +37,7 @@ const Login = (props:Props) => {
   const navigate = useNavigate();
   return (
     <div className="App">
-      <header className="App-header">
-        User Login
-      </header>
+      <header className="App-header">User Login</header>
       <main className="App-body">
         <Select 
         options={options}
