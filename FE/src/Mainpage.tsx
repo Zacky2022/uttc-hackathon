@@ -154,9 +154,6 @@ const Mainpage = (props:Props) => {
 
   return (
     <body>
-      <div className="sidebody">
-        <p>サイドバー</p>
-      </div>
       <div className="mainbody">
       <h1 className="HelloName">Hello, {Name} san !</h1>
       <h2 className="Conbox">contributions you sent</h2>
