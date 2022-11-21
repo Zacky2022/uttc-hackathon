@@ -16,8 +16,9 @@
 .App-header {
   font-size:xx-large;
   background-color: #282c34;
-  min-height:100px;
+  padding:40px;
   color: white;
+
 }
 .DBdata {
   background-color: aliceblue;
