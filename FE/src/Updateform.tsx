@@ -36,7 +36,7 @@ const Updateform = (props: Props) => {
   }
   
   return (
-    <form  onSubmit={submit}>
+    <form  onSubmit={submit} className="UpdateForm">
       <h2>Updating contribution</h2>
       <Select 
           options={options}
