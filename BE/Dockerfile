@@ -1,5 +1,5 @@
 FROM golang:1.18
 WORKDIR /
-COPY ./main.go ./
+COPY ./ ./
 CMD ["go","run","main.go"]
 EXPOSE 8080
