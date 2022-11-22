@@ -5,7 +5,6 @@ import (
 	"encoding/json"
 	"fmt"
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 	"github.com/oklog/ulid"
 	"log"
 	"math/rand"
@@ -55,30 +54,23 @@ type Updatetype struct {
 var db *sql.DB
 
 func init() {
-	err := godotenv.Load(".env")
-	if err != nil {
-		panic("Error loading .env file")
-	}
 	mysqlUser := os.Getenv("MYSQL_USER")
-	mysqlUserPwd := os.Getenv("MYSQL_PASSWORD")
+	mysqlPwd := os.Getenv("MYSQL_PWD")
+	mysqlHost := os.Getenv("MYSQL_HOST")
 	mysqlDatabase := os.Getenv("MYSQL_DATABASE")
 
-	// ①-2
-	_db, err := sql.Open("mysql", fmt.Sprintf("%s:%s@(localhost:3306)/%s", mysqlUser, mysqlUserPwd, mysqlDatabase))
+	connStr := fmt.Sprintf("%s:%s@%s/%s", mysqlUser, mysqlPwd, mysqlHost, mysqlDatabase)
+	_db, err := sql.Open("mysql", connStr)
 	if err != nil {
 		log.Fatalf("fail: sql.Open, %v\n", err)
-	}
-	// ①-3
-	if err := _db.Ping(); err != nil {
-		log.Fatalf("fail: _db.Ping, %v\n", err)
 	}
 	db = _db
 }
 
 // ② /userでリクエストされたらnameパラメーターと一致する名前を持つレコードをJSON形式で返す
 func userhandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "*")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 
@@ -180,8 +172,8 @@ func userhandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func listhandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "*")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 	userId := r.URL.Query().Get("user_id")
@@ -328,8 +320,8 @@ func listhandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func updatehandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "*")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 	switch r.Method {
@@ -428,8 +420,8 @@ func updatehandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func deletehandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Headers", "*")
-	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Access-Control-Allow-Headers", "https://uttc-hackathon-kappa.vercel.app")
+	w.Header().Set("Access-Control-Allow-Origin", "https://uttc-hackathon-kappa.vercel.app")
 	w.Header().Set("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
 	w.Header().Set("Content-Type", "application/json")
 	switch r.Method {
